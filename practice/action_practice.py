@@ -1,5 +1,5 @@
 import json
-import practice1
+from practice import practice1
 
 model_output = """
 {
