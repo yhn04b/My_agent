@@ -14,25 +14,24 @@ Available tools:
 
 Choose an appropriate tool for the user's task.
 
-Return only a valid JSON object in this format:
+If a tool is needed, return a JSON object:
 
 {
     "tool": "tool_name",
     "arguments": {}
 }
 
-Example:
+After calling a tool, wait for the Observation.
 
-User: Calculate 12 + 35.
+Use the Observation to decide what to do next.
 
-Output:
+If the task is complete, return:
+
 {
-    "tool": "add",
-    "arguments": {
-        "a": 12,
-        "b": 35
-    }
+    "answer": "your final answer"
 }
 
+Return only one valid JSON object at a time.
 Do not output Markdown code fences or additional text.
+Do not invent tool observations.
 """

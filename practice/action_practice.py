@@ -12,18 +12,24 @@ model_output = """
 
 def process_action(model_output):
     output = json.loads(model_output)
-    return  practice1.execute_tool(
+    return  output
+
+if __name__ == "__main__":
+    output = process_action(model_output)
+    observation = practice1.execute_tool(
             output["tool"],
             **output["arguments"]
         )
+    print(observation)
 
-if __name__ == "__main__":
-    print(process_action(model_output))
+    print(
+        practice1.execute_tool(
+            process_action(
+                '{"tool": "add", "arguments": {"a": 8, "b": 9}'
+            ), 
+            **process_action(
+                '{"tool": "add", "arguments": {"a": 8, "b": 9}'
+            )
+        )
+    )
 
-    print(process_action(
-        '{"tool": "add", "arguments": {"a": 8, "b": 9}}'
-    ))
-
-    print(process_action(
-        '{"tool": "get_date", "arguments": {}}'
-    ))
