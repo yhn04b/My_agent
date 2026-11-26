@@ -1,11 +1,13 @@
 import os
 from openai import OpenAI
+from api.check_key import get_api_key
 
 client = OpenAI(
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
+    api_key=get_api_key(),
     base_url="https://api.deepseek.com"
 )
-
+# 目前虽然避免了每次启动shell之后在终端输入api, 
+# 但也导致每次运行main时都得输入api, 后续会考虑优化
 
 def call_model(messages):
     return  client.chat.completions.create(

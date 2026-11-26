@@ -5,20 +5,17 @@ from prompts.react import SYSTEM_PROMPT
 
 messages = [
     {
-        "role": "system", 
+        "role": "system",
         "content": SYSTEM_PROMPT
     },
     {
-        "role": "user", 
+        "role": "user",
         "content": "Calculate 125 + 378"
     }
 ]
 
 if __name__ == "__main__":
     response = call_model(messages)
-    action = process_action(response)
-    observation = execute_tool(
-            *action["tool"], 
-            **action["arguments"]
-        )
+    model_output = response.choices[0].message.content
+    observation = process_action(model_output)
     print(response, "\n", observation, "\n", response.usage.total_tokens)
