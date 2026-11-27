@@ -25,11 +25,11 @@ if __name__ == "__main__":
     print(
         practice1.execute_tool(
             process_action(
-                '{"tool": "add", "arguments": {"a": 8, "b": 9}'
-            ), 
+                '{"tool": "add", "arguments": {"a": 8, "b": 9}}'
+            )["tool"], 
             **process_action(
-                '{"tool": "add", "arguments": {"a": 8, "b": 9}'
-            )
+                '{"tool": "add", "arguments": {"a": 8, "b": 9}}'
+            )["arguments"]
         )
     )
 

@@ -1,0 +1,9 @@
+.venv/
+.git/
+.vscode/
+**/__pycache__/
+**/*.pyc
+.env
+.env.*
+*.log
+API_key.txt
